@@ -15,13 +15,14 @@ mongoose.connect('mongodb://localhost/wm');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', function () {
   // we're connected!
   console.log("we're connected!");
 });
 
 
 // Test ...
+/*
 var kittySchema = new mongoose.Schema({
   name: String
 });
@@ -37,14 +38,21 @@ fluffy.save(function (err, fluffy) {
   if (err) return console.error(err);
   console.log('saved');
 });
-
+*/
 // ...entfernen
 
+/*
+    Via Konsolen anschauen: 
+    mongo
+    use wm
+    db.kittens.find()
+*/
 
 
 var cors = require('cors');
 app.use(cors({
-  origin:'http://localhost:4200'
+  origin: ['http://localhost:4200', 'http://127.0.0.1:4200'],
+  credentials: true
 }))
 
 // view engine setup
@@ -61,12 +69,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
