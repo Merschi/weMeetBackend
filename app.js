@@ -51,7 +51,7 @@ fluffy.save(function (err, fluffy) {
 
 var cors = require('cors');
 app.use(cors({
-  origin: ['http://localhost:4200', 'http://127.0.0.1:4200'],
+  origin: ['https://localhost:4200', 'https://127.0.0.1:4200', 'https://ottehome:4200'],
   credentials: true
 }))
 

@@ -6,7 +6,14 @@
 
 var app = require('../app');
 var debug = require('debug')('wemeetbackend:server');
-var http = require('http');
+var https = require('https');
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync('/home/stephan/ssl/ottehome.key'),
+  cert: fs.readFileSync('/home/stephan/ssl/ottehome.crt')
+};
+
 
 /**
  * Get port from environment and store in Express.
@@ -19,8 +26,8 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
-console.log("http server");
+var server = https.createServer(options, app);
+console.log("https server");
 
 /**
  * Listen on provided port, on all network interfaces.
