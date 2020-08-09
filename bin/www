@@ -10,8 +10,8 @@ var https = require('https');
 const fs = require('fs');
 
 const options = {
-  key: fs.readFileSync('/home/stephan/ssl/ottehome.key'),
-  cert: fs.readFileSync('/home/stephan/ssl/ottehome.crt')
+  key: fs.readFileSync('/home/stephan/ssl_www/ottelinux.key'),
+  cert: fs.readFileSync('/home/stephan/ssl_www/ottelinux.crt')
 };
 
 

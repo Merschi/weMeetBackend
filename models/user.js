@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
 var schema = new Schema({
-    email : {type:String, require:true},
-    username: {type:String, require:true},
-    password:{type:String, require:true},
-    creation_dt:{type:Date, require:true}
+    email: {type:String, required:true},
+    username: {type:String, required:true, minlength: 6},
+    password:{type:String, required:true},
+    creation_dt:{type:Date, required:true}
 });
 
 schema.statics.hashPassword = function hashPassword(password){
